@@ -11,6 +11,8 @@
 
 [![Build Status](https://builds.guizhanss.com/ybw0014/FastMachines/master/badge.svg)](https://builds.guizhanss.com/ybw0014/FastMachines/master)
 
+注：上面链接的下载为已定制的构建，可能与本仓库中的源代码不同。
+
 ## 支持的插件
 
 - [SlimefunTranslation](https://github.com/ybw0014/SlimefunTranslation): 为每位玩家显示不同的语言。
