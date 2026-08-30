@@ -11,7 +11,9 @@ import net.guizhanss.fastmachines.implementation.items.machines.infinityexpansio
 import net.guizhanss.fastmachines.implementation.items.machines.infinityexpansion.FastMobDataInfuser
 import net.guizhanss.fastmachines.implementation.items.machines.infinityexpansion2.FastInfinityWorkbench2
 import net.guizhanss.fastmachines.implementation.items.machines.infinityexpansion2.FastMobDataInfuser2
+import net.guizhanss.fastmachines.implementation.items.machines.networks.FastExpansionWorkbench
 import net.guizhanss.fastmachines.implementation.items.machines.networks.FastQuantumWorkbench
+import net.guizhanss.fastmachines.implementation.items.machines.networks.FastStorageUpgradeTable
 import net.guizhanss.fastmachines.implementation.items.machines.slimeframe.FastSlimeFrameFoundry
 import net.guizhanss.fastmachines.implementation.items.machines.supreme.FastCoreFabricator
 import net.guizhanss.fastmachines.implementation.items.machines.supreme.FastGearFabricator
@@ -426,6 +428,34 @@ object FMItems : ItemRegistry(FastMachines.instance, FastMachines.localization.i
             'O' means SlimefunItems.OUTPUT_CHEST
         }
     }
+
+    val FAST_EXPANSION_WORKBENCH by buildSlimefunItem<FastExpansionWorkbench> {
+        material = Material.STRIPPED_BAMBOO_BLOCK.asMaterialType()
+        itemGroup = FMItemGroups.MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +"   "
+            +"   "
+            +"OmC"
+            'O' means SlimefunItems.OUTPUT_CHEST
+            'm' means "NTW_EXPANSION_WORKBENCH".getSfItem()?.item
+            'C' means if (FastMachines.configService.fmUseEnergy.value) FAST_CORE else null
+        }
+    }
+
+    val FAST_STORAGE_UPGRADE_TABLE by buildSlimefunItem<FastStorageUpgradeTable> {
+        material = Material.CARTOGRAPHY_TABLE.asMaterialType()
+        itemGroup = FMItemGroups.MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +"   "
+            +"   "
+            +"OmC"
+            'O' means SlimefunItems.OUTPUT_CHEST
+            'm' means "NTW_EXPANSION_STORAGE_UPGRADE_TABLE".getSfItem()?.item
+            'C' means if (FastMachines.configService.fmUseEnergy.value) FAST_CORE else null
+        }
+    }
     //</editor-fold>
 
     //<editor-fold desc="Machines - Supreme" collapsed="true">
@@ -460,9 +490,9 @@ object FMItems : ItemRegistry(FastMachines.instance, FastMachines.localization.i
             'A' means Material.SHROOMLIGHT
             'B' means Material.ORANGE_STAINED_GLASS
             'C' means Material.SHROOMLIGHT
-            'D' means if (FastMachines.configService.fmUseEnergy.value) FAST_CORE else null
+            'D' means SlimefunItems.OUTPUT_CHEST
             'E' means Material.IRON_TRAPDOOR
-            'F' means SlimefunItems.OUTPUT_CHEST
+            'F' means if (FastMachines.configService.fmUseEnergy.value) FAST_CORE else null
             'G' means Material.GOLD_BLOCK
             'H' means Material.DISPENSER
             'J' means Material.GOLD_BLOCK
@@ -480,9 +510,9 @@ object FMItems : ItemRegistry(FastMachines.instance, FastMachines.localization.i
             'A' means Material.CRYING_OBSIDIAN
             'B' means Material.PURPLE_STAINED_GLASS
             'C' means Material.CRYING_OBSIDIAN
-            'D' means if (FastMachines.configService.fmUseEnergy.value) FAST_CORE else null
+            'D' means SlimefunItems.OUTPUT_CHEST
             'E' means Material.IRON_TRAPDOOR
-            'F' means SlimefunItems.OUTPUT_CHEST
+            'F' means if (FastMachines.configService.fmUseEnergy.value) FAST_CORE else null
             'G' means Material.NETHERITE_BLOCK
             'H' means Material.DISPENSER
             'J' means Material.NETHERITE_BLOCK

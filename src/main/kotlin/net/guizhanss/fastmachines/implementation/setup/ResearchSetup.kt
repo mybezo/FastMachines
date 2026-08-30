@@ -58,6 +58,8 @@ object ResearchSetup {
             FMItems.FAST_MOB_DATA_INFUSER_2,
             // networks
             FMItems.FAST_QUANTUM_WORKBENCH,
+            FMItems.FAST_EXPANSION_WORKBENCH,
+            FMItems.FAST_STORAGE_UPGRADE_TABLE,
             // supreme
             FMItems.FAST_GEAR_FABRICATOR,
             FMItems.FAST_CORE_FABRICATOR,
