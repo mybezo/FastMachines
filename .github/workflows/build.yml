@@ -18,10 +18,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
 
       - name: Setup Gradle
@@ -33,9 +33,6 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build --stacktrace
 
-      - name: Run tests
-        run: ./gradlew test --stacktrace
-
       - name: Upload build artifact
         if: success()
         uses: actions/upload-artifact@v4
@@ -43,4 +40,3 @@ jobs:
           name: FastMachines-${{ github.sha }}
           path: build/libs/*.jar
           if-no-files-found: error
-          
