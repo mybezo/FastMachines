@@ -17,6 +17,8 @@
 - [InfinityExpansion](https://github.com/Mooy1/InfinityExpansion): 为无尽贪婪提供额外的快捷机器。
 - [SlimeFrame](https://github.com/VoperAD/SlimeFrame): 为粘液战甲提供额外的快捷机器。
 - [InfinityExpansion2](https://github.com/ybw0014/InfinityExpansion2): 为无尽贪婪2提供额外的快捷机器。
+- [Supreme](https://github.com/SlimefunGuguProject/Supreme): 为 Supreme 提供额外的快捷机器。
+- [Networks-Exp](https://github.com/lijinhong11/Networks-Exp): 网络/Network Expansion 支持及额外的快捷机器。
 
 ## 感谢
 
@@ -25,4 +27,3 @@
 感谢[minecraft-heads.com](https://minecraft-heads.com/)提供此插件中使用的头颅。
 
 [![](https://minecraft-heads.com/images/banners/minecraft-heads_fullbanner_468x60.png)](https://minecraft-heads.com/)
-
