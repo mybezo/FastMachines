@@ -9,7 +9,6 @@ Credit: Final_Root
 
 ## Download
 
-Download from (either one is fine):
 
 ## Supported plugins
 
