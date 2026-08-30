@@ -11,7 +11,7 @@
 
 [![Build Status](https://builds.guizhanss.com/ybw0014/FastMachines/master/badge.svg)](https://builds.guizhanss.com/ybw0014/FastMachines/master)
 
-注：上面链接的下载为已定制的构建，可能与本仓库中的源代码不同。
+注意：此仓库中的源代码已被定制，可能与上面链接的原始构建不同。
 
 ## 支持的插件
 
