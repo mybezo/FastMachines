@@ -14,6 +14,10 @@ Download from (either one is fine):
 - [Blob builds](https://blob.build/project/FastMachines)
 - [Guizhan Builds![Build Status](https://builds.guizhanss.com/ybw0014/FastMachines/master/badge.svg)](https://builds.guizhanss.com/ybw0014/FastMachines/master)
 
+Note: The downloads linked above are customized builds and may differ from the source code in this repository.
+
+Catatan: Unduhan yang ditautkan di atas adalah build yang telah dikustomisasi dan mungkin berbeda dengan kode sumber di repositori ini.
+
 ## Supported plugins
 
 - [SlimefunTranslation](https://github.com/ybw0014/SlimefunTranslation): per player localization.
