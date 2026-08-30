@@ -14,9 +14,9 @@ Download from (either one is fine):
 - [Blob builds](https://blob.build/project/FastMachines)
 - [Guizhan Builds![Build Status](https://builds.guizhanss.com/ybw0014/FastMachines/master/badge.svg)](https://builds.guizhanss.com/ybw0014/FastMachines/master)
 
-Note: The downloads linked above are customized builds and may differ from the source code in this repository.
+Note: The source code in this repository has been customized and may differ from the original builds linked above.
 
-Catatan: Unduhan yang ditautkan di atas adalah build yang telah dikustomisasi dan mungkin berbeda dengan kode sumber di repositori ini.
+Catatan: Kode sumber di repositori ini telah dikustomisasi dan mungkin berbeda dengan build asli yang ditautkan di atas.
 
 ## Supported plugins
 
