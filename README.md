@@ -20,6 +20,8 @@ Download from (either one is fine):
 - [InfinityExpansion](https://github.com/Mooy1/InfinityExpansion): extra fast machines for Infinity Expansion.
 - [SlimeFrame](https://github.com/VoperAD/SlimeFrame): extra fast machines for SlimeFrame.
 - [InfinityExpansion2](https://github.com/ybw0014/InfinityExpansion2): extra fast machines for Infinity Expansion 2.
+- [Supreme](https://github.com/SlimefunGuguProject/Supreme): extra fast machines for Supreme.
+- [Networks-Exp](https://github.com/lijinhong11/Networks-Exp): Network/Network Expansion support and extra fast machines.
 
 ## Thanks
 
@@ -27,5 +29,4 @@ Thanks to anyone who helped me during the development of this addon.
 
 Thanks to [minecraft-heads.com](https://minecraft-heads.com/) for the heads used in this addon.
 
-[![](https://minecraft-heads.com/images/banners/minecraft-heads_fullbanner_468x60.png)](https://minecraft-heads.com/) 
-
+[![](https://minecraft-heads.com/images/banners/minecraft-heads_fullbanner_468x60.png)](https://minecraft-heads.com/)
