@@ -17,6 +17,10 @@ items:
     conditions:
       force-load: true
     name: "&eFast Machines &7- &aMachines"
+  BEDROCK_MACHINES:
+    conditions:
+      force-load: true
+    name: "&eFast Machines &7- &bBedrock"
 
   # gui items
   CHOICE_INDICATOR:

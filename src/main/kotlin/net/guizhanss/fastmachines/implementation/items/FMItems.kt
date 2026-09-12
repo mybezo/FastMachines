@@ -18,6 +18,7 @@ import net.guizhanss.fastmachines.implementation.items.machines.slimeframe.FastS
 import net.guizhanss.fastmachines.implementation.items.machines.supreme.FastCoreFabricator
 import net.guizhanss.fastmachines.implementation.items.machines.supreme.FastGearFabricator
 import net.guizhanss.fastmachines.implementation.items.machines.supreme.FastMagicalFabricator
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastEnhancedCraftingTableBedrock
 import net.guizhanss.fastmachines.implementation.items.machines.slimefun.FastAncientAltar
 import net.guizhanss.fastmachines.implementation.items.machines.slimefun.FastArmorForge
 import net.guizhanss.fastmachines.implementation.items.machines.slimefun.FastComposter
@@ -128,6 +129,20 @@ object FMItems : ItemRegistry(FastMachines.instance, FastMachines.localization.i
             'O' means SlimefunItems.OUTPUT_CHEST
             'D' means Material.DISPENSER
             'o' means if (FastMachines.configService.fmUseEnergy.value) FAST_CORE else null
+        }
+    }
+
+    val FAST_ENHANCED_CRAFTING_TABLE_BEDROCK by buildSlimefunItem<FastEnhancedCraftingTableBedrock> {
+        material = Material.CARTOGRAPHY_TABLE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_ENHANCED_CRAFTING_TABLE
         }
     }
 

@@ -38,15 +38,17 @@ class FastMachineCache(
             needUpdateMenu = true
             false
         }
-        menu.addMenuClickHandler(BaseFastMachine.CRAFT_SLOT) { p, _, _, action ->
-            val amount = when {
-                action.isShiftClicked && action.isRightClicked -> Int.MAX_VALUE
-                action.isShiftClicked -> 64
-                action.isRightClicked -> 16
-                else -> 1
+        machine.craftSlots.forEach { (slot, fixedAmount) ->
+            menu.addMenuClickHandler(slot) { p, _, _, action ->
+                val amount = fixedAmount ?: when {
+                    action.isShiftClicked && action.isRightClicked -> Int.MAX_VALUE
+                    action.isShiftClicked -> 64
+                    action.isRightClicked -> 16
+                    else -> 1
+                }
+                craft(p, amount)
+                false
             }
-            craft(p, amount)
-            false
         }
     }
 
@@ -58,7 +60,7 @@ class FastMachineCache(
     }
 
     private fun generateOutputs() {
-        val inputs = menu.countItems(*BaseFastMachine.INPUT_SLOTS)
+        val inputs = menu.countItems(*machine.craftInputSlots)
 
         // if checksum does not need update
         if (inputs.hashCode() == invChecksum) return
@@ -89,10 +91,12 @@ class FastMachineCache(
 
     private fun updateMenu() {
         needUpdateMenu = false
+        val previewSlots = machine.previewSlots
+        val itemsPerPage = previewSlots.size
 
         // no available recipes, clear preview
         if (availableRecipes.isEmpty()) {
-            BaseFastMachine.PREVIEW_SLOTS.forEach { slot ->
+            previewSlots.forEach { slot ->
                 menu.replaceExistingItem(slot, ChestMenuUtils.getBackground())
                 menu.addMenuClickHandler(slot, ChestMenuUtils.getEmptyClickHandler())
             }
@@ -101,11 +105,11 @@ class FastMachineCache(
         }
 
         val recipesList = availableRecipes.entries.toList()
-        val totalPages = (recipesList.size + BaseFastMachine.ITEMS_PER_PAGE - 1) / BaseFastMachine.ITEMS_PER_PAGE
+        val totalPages = (recipesList.size + itemsPerPage - 1) / itemsPerPage
         page = page.coerceIn(1, totalPages)
-        val startIndex = (page - 1) * BaseFastMachine.ITEMS_PER_PAGE
+        val startIndex = (page - 1) * itemsPerPage
 
-        BaseFastMachine.PREVIEW_SLOTS.forEachIndexed { index, slot ->
+        previewSlots.forEachIndexed { index, slot ->
             val recipeIndex = startIndex + index
             if (recipeIndex >= recipesList.size) {
                 menu.replaceExistingItem(slot, ChestMenuUtils.getBackground())
@@ -132,7 +136,7 @@ class FastMachineCache(
     }
 
     private fun craft(p: Player, expectCrafts: Int) {
-        val inputs = menu.countItems(*BaseFastMachine.INPUT_SLOTS)
+        val inputs = menu.countItems(*machine.craftInputSlots)
 
         // check if a recipe is selected
         val recipe = selectedRecipe ?: return
@@ -190,15 +194,15 @@ class FastMachineCache(
 
         // deduct inputs
         recipe.inputs.forEach { choice ->
-            menu.consumeChoice(choice, actualCrafts, *BaseFastMachine.INPUT_SLOTS)
+            menu.consumeChoice(choice, actualCrafts, *machine.craftInputSlots)
         }
 
         // add outputs
         repeat(actualCrafts) {
             val outputItem = recipe.getOutput(pos.world).clone()
 
-            if (menu.fits(outputItem, *BaseFastMachine.OUTPUT_SLOTS)) {
-                menu.pushItem(outputItem, *BaseFastMachine.OUTPUT_SLOTS)
+            if (menu.fits(outputItem, *machine.craftOutputPushSlots)) {
+                menu.pushItem(outputItem, *machine.craftOutputPushSlots)
             } else {
                 InventoryUtil.push(p, outputItem)
             }
