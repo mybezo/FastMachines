@@ -42,13 +42,13 @@ abstract class BedrockFastMachine(
         get() = BEDROCK_PREVIEW_SLOTS
 
     final override fun craftButtonItem(amount: Int?): ItemStack {
-        val craftAmount = amount ?: 1
-        val energyCost = energyPerUse.toLong() * craftAmount
+        val n = amount ?: 1
+        val cost = energyPerUse.toLong() * n
         val item = ItemStack(craftItemMaterial)
         val meta = item.itemMeta
 
         meta.displayName(
-            Component.text("Craft x$craftAmount", NamedTextColor.GREEN)
+            Component.text("Craft x$n", NamedTextColor.GREEN)
                 .decoration(TextDecoration.ITALIC, false)
                 .decoration(TextDecoration.BOLD, false)
         )
@@ -61,7 +61,7 @@ abstract class BedrockFastMachine(
                     .decoration(TextDecoration.ITALIC, false)
                     .decoration(TextDecoration.BOLD, false)
                     .append(
-                        Component.text("${craftAmount}x", NamedTextColor.WHITE)
+                        Component.text("${n}x", NamedTextColor.WHITE)
                             .decoration(TextDecoration.ITALIC, false)
                             .decoration(TextDecoration.BOLD, false)
                     ),
@@ -69,7 +69,7 @@ abstract class BedrockFastMachine(
                     .decoration(TextDecoration.ITALIC, false)
                     .decoration(TextDecoration.BOLD, false)
                     .append(
-                        Component.text("${"%,d".format(energyCost)} J", NamedTextColor.AQUA)
+                        Component.text("${"%,d".format(cost)} J", NamedTextColor.AQUA)
                             .decoration(TextDecoration.ITALIC, false)
                             .decoration(TextDecoration.BOLD, false)
                     ),
