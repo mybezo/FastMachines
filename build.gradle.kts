@@ -84,6 +84,8 @@ bukkit {
         "SlimeFrame",
         "SlimeHUD",
         "InfinityExpansion2",
+        "Networks",
+        "Supreme",
     )
     loadBefore = listOf(
         "SlimeCustomizer",

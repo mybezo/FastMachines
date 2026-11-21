@@ -49,6 +49,32 @@ abstract class BaseFastMachine(
     open val craftItem: ItemStack
         get() = FastMachines.localization.getItem("CRAFT", craftItemMaterial).toItem()
 
+    // the item shown in a craft button. amount is the fixed craft amount of the button, or null for the default button
+    open fun craftButtonItem(amount: Int?): ItemStack = craftItem
+
+    /**
+     * The craft buttons. Key is the slot, value is the fixed craft amount, or `null` to use the click type.
+     */
+    open val craftSlots: Map<Int, Int?>
+        get() = mapOf(CRAFT_SLOT to null)
+
+    // the menu layout, can be overridden by subclasses (e.g. Bedrock-friendly machines)
+    // input slots are also used to count and consume the materials
+    open val craftInputSlots: IntArray
+        get() = INPUT_SLOTS
+    open val previewSlots: IntArray
+        get() = PREVIEW_SLOTS
+    open val craftOutputPushSlots: IntArray
+        get() = OUTPUT_SLOTS
+
+    // the slot to display energy consumption
+    open val energySlot: Int
+        get() = ENERGY_SLOT
+
+    // whether to display the energy consumption item
+    open val showEnergySlot: Boolean
+        get() = true
+
     abstract val recipeLoader: RecipeLoader
 
     private val _recipes = mutableListOf<Recipe>()
@@ -79,7 +105,7 @@ abstract class BaseFastMachine(
     final override fun getCapacity() = if (FastMachines.configService.fmUseEnergy.value) energyCapacitySetting.value else 0
 
     final override fun setup(preset: BlockMenuPreset) {
-        for (slot in PREVIEW_SLOTS) {
+        for (slot in previewSlots) {
             preset.addItem(slot, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler())
         }
         preset.addItem(INFO_SLOT, INFO_ITEM, ChestMenuUtils.getEmptyClickHandler())
@@ -87,18 +113,22 @@ abstract class BaseFastMachine(
         preset.addItem(SCROLL_UP_SLOT, SCROLL_UP_ITEM, ChestMenuUtils.getEmptyClickHandler())
         preset.addItem(SCROLL_DOWN_SLOT, SCROLL_DOWN_ITEM, ChestMenuUtils.getEmptyClickHandler())
 
-        preset.addItem(CRAFT_SLOT, craftItem, ChestMenuUtils.getEmptyClickHandler())
-        preset.addItem(
-            ENERGY_SLOT,
-            SlimefunHeadTexture.ENERGY_CONNECTOR.asItemStack.edit {
-                name(" ")
-                lore(LoreBuilder.power(energyPerUse, FastMachines.localization.getString("lores.per-craft")))
-            },
-            ChestMenuUtils.getEmptyClickHandler()
-        )
+        craftSlots.forEach { (slot, amount) ->
+            preset.addItem(slot, craftButtonItem(amount), ChestMenuUtils.getEmptyClickHandler())
+        }
+        if (showEnergySlot) {
+            preset.addItem(
+                energySlot,
+                SlimefunHeadTexture.ENERGY_CONNECTOR.asItemStack.edit {
+                    name(" ")
+                    lore(LoreBuilder.power(energyPerUse, FastMachines.localization.getString("lores.per-craft")))
+                },
+                ChestMenuUtils.getEmptyClickHandler()
+            )
+        }
     }
 
-    final override fun getInputSlots() = INPUT_SLOTS
+    final override fun getInputSlots() = craftInputSlots
 
     final override fun getOutputSlots() = intArrayOf()
 
@@ -110,7 +140,7 @@ abstract class BaseFastMachine(
     final override fun onBreak(e: BlockBreakEvent, menu: BlockMenu) {
         super.onBreak(e, menu)
         val loc = menu.location
-        menu.dropItems(loc, *INPUT_SLOTS)
+        menu.dropItems(loc, *craftInputSlots)
         _caches.remove(BlockPosition(loc))
     }
 

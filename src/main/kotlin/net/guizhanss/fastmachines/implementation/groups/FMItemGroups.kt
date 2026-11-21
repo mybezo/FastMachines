@@ -39,6 +39,15 @@ object FMItemGroups {
         ).toItem()
     )
 
+    val BEDROCK_MACHINES = SubItemGroup(
+        Keys.BEDROCK_MACHINES,
+        MAIN,
+        FastMachines.localization.getItem(
+            "BEDROCK_MACHINES",
+            HeadTexture.MAIN.texture
+        ).toItem()
+    )
+
     val HIDDEN = HiddenItemGroup(
         Keys.HIDDEN,
         Material.BARRIER.toItem().edit { name("FM Invalid items") }

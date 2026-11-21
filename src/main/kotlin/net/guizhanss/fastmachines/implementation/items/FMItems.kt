@@ -7,6 +7,33 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock
 import net.guizhanss.fastmachines.FastMachines
 import net.guizhanss.fastmachines.implementation.groups.FMItemGroups
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastAncientAltarBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastArmorForgeBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastComposterBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastCompressorBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastCoreFabricatorBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastCraftingTableBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastEnhancedCraftingTableBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastExpansionWorkbenchBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastFurnaceBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastGearFabricatorBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastGrindStoneBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastInfinityWorkbench2Bedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastInfinityWorkbenchBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastJuicerBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastMagicWorkbenchBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastMagicalFabricatorBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastMobDataInfuser2Bedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastMobDataInfuserBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastOreCrusherBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastOreWasherBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastPanningMachineBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastPressureChamberBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastQuantumWorkbenchBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastSlimeFrameFoundryBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastSmelteryBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastStorageUpgradeTableBedrock
+import net.guizhanss.fastmachines.implementation.items.machines.bedrock.FastTableSawBedrock
 import net.guizhanss.fastmachines.implementation.items.machines.infinityexpansion.FastInfinityWorkbench
 import net.guizhanss.fastmachines.implementation.items.machines.infinityexpansion.FastMobDataInfuser
 import net.guizhanss.fastmachines.implementation.items.machines.infinityexpansion2.FastInfinityWorkbench2
@@ -128,6 +155,20 @@ object FMItems : ItemRegistry(FastMachines.instance, FastMachines.localization.i
             'O' means SlimefunItems.OUTPUT_CHEST
             'D' means Material.DISPENSER
             'o' means if (FastMachines.configService.fmUseEnergy.value) FAST_CORE else null
+        }
+    }
+
+    val FAST_ENHANCED_CRAFTING_TABLE_BEDROCK by buildSlimefunItem<FastEnhancedCraftingTableBedrock> {
+        material = Material.CARTOGRAPHY_TABLE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_ENHANCED_CRAFTING_TABLE
         }
     }
 
@@ -518,5 +559,369 @@ object FMItems : ItemRegistry(FastMachines.instance, FastMachines.localization.i
             'J' means Material.NETHERITE_BLOCK
         }
     }
+    val FAST_CRAFTING_TABLE_BEDROCK by buildSlimefunItem<FastCraftingTableBedrock> {
+        material = Material.CRAFTING_TABLE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_CRAFTING_TABLE
+        }
+    }
+
+    val FAST_FURNACE_BEDROCK by buildSlimefunItem<FastFurnaceBedrock> {
+        material = Material.FURNACE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_FURNACE
+        }
+    }
+
+    val FAST_GRIND_STONE_BEDROCK by buildSlimefunItem<FastGrindStoneBedrock> {
+        material = Material.GRINDSTONE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_GRIND_STONE
+        }
+    }
+
+    val FAST_ARMOR_FORGE_BEDROCK by buildSlimefunItem<FastArmorForgeBedrock> {
+        material = Material.IRON_BLOCK.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_ARMOR_FORGE
+        }
+    }
+
+    val FAST_ORE_CRUSHER_BEDROCK by buildSlimefunItem<FastOreCrusherBedrock> {
+        material = Material.DROPPER.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_ORE_CRUSHER
+        }
+    }
+
+    val FAST_COMPRESSOR_BEDROCK by buildSlimefunItem<FastCompressorBedrock> {
+        material = Material.PISTON.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_COMPRESSOR
+        }
+    }
+
+    val FAST_SMELTERY_BEDROCK by buildSlimefunItem<FastSmelteryBedrock> {
+        material = Material.BLAST_FURNACE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_SMELTERY
+        }
+    }
+
+    val FAST_PRESSURE_CHAMBER_BEDROCK by buildSlimefunItem<FastPressureChamberBedrock> {
+        material = Material.SMOKER.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_PRESSURE_CHAMBER
+        }
+    }
+
+    val FAST_MAGIC_WORKBENCH_BEDROCK by buildSlimefunItem<FastMagicWorkbenchBedrock> {
+        material = Material.BOOKSHELF.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_MAGIC_WORKBENCH
+        }
+    }
+
+    val FAST_ORE_WASHER_BEDROCK by buildSlimefunItem<FastOreWasherBedrock> {
+        material = Material.CAULDRON.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_ORE_WASHER
+        }
+    }
+
+    val FAST_TABLE_SAW_BEDROCK by buildSlimefunItem<FastTableSawBedrock> {
+        material = Material.STONECUTTER.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_TABLE_SAW
+        }
+    }
+
+    val FAST_COMPOSTER_BEDROCK by buildSlimefunItem<FastComposterBedrock> {
+        material = Material.COMPOSTER.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_COMPOSTER
+        }
+    }
+
+    val FAST_PANNING_MACHINE_BEDROCK by buildSlimefunItem<FastPanningMachineBedrock> {
+        material = Material.HOPPER.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_PANNING_MACHINE
+        }
+    }
+
+    val FAST_JUICER_BEDROCK by buildSlimefunItem<FastJuicerBedrock> {
+        material = Material.BREWING_STAND.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_JUICER
+        }
+    }
+
+    val FAST_ANCIENT_ALTAR_BEDROCK by buildSlimefunItem<FastAncientAltarBedrock> {
+        material = Material.ENCHANTING_TABLE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_ANCIENT_ALTAR
+        }
+    }
+
+    val FAST_INFINITY_WORKBENCH_BEDROCK by buildSlimefunItem<FastInfinityWorkbenchBedrock> {
+        material = Material.RESPAWN_ANCHOR.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_INFINITY_WORKBENCH
+        }
+    }
+
+    val FAST_MOB_DATA_INFUSER_BEDROCK by buildSlimefunItem<FastMobDataInfuserBedrock> {
+        material = Material.LODESTONE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_MOB_DATA_INFUSER
+        }
+    }
+
+    val FAST_SLIMEFRAME_FOUNDRY_BEDROCK by buildSlimefunItem<FastSlimeFrameFoundryBedrock> {
+        material = Material.ANVIL.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_SLIMEFRAME_FOUNDRY
+        }
+    }
+
+    val FAST_INFINITY_WORKBENCH_2_BEDROCK by buildSlimefunItem<FastInfinityWorkbench2Bedrock> {
+        material = Material.RESPAWN_ANCHOR.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_INFINITY_WORKBENCH_2
+        }
+    }
+
+    val FAST_MOB_DATA_INFUSER_2_BEDROCK by buildSlimefunItem<FastMobDataInfuser2Bedrock> {
+        material = Material.LODESTONE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_MOB_DATA_INFUSER_2
+        }
+    }
+
+    val FAST_QUANTUM_WORKBENCH_BEDROCK by buildSlimefunItem<FastQuantumWorkbenchBedrock> {
+        material = Material.SMITHING_TABLE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_QUANTUM_WORKBENCH
+        }
+    }
+
+    val FAST_EXPANSION_WORKBENCH_BEDROCK by buildSlimefunItem<FastExpansionWorkbenchBedrock> {
+        material = Material.STRIPPED_BAMBOO_BLOCK.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_EXPANSION_WORKBENCH
+        }
+    }
+
+    val FAST_STORAGE_UPGRADE_TABLE_BEDROCK by buildSlimefunItem<FastStorageUpgradeTableBedrock> {
+        material = Material.CARTOGRAPHY_TABLE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_STORAGE_UPGRADE_TABLE
+        }
+    }
+
+    val FAST_GEAR_FABRICATOR_BEDROCK by buildSlimefunItem<FastGearFabricatorBedrock> {
+        material = Material.SMITHING_TABLE.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_GEAR_FABRICATOR
+        }
+    }
+
+    val FAST_CORE_FABRICATOR_BEDROCK by buildSlimefunItem<FastCoreFabricatorBedrock> {
+        material = Material.SHROOMLIGHT.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_CORE_FABRICATOR
+        }
+    }
+
+    val FAST_MAGICAL_FABRICATOR_BEDROCK by buildSlimefunItem<FastMagicalFabricatorBedrock> {
+        material = Material.CRYING_OBSIDIAN.asMaterialType()
+        itemGroup = FMItemGroups.BEDROCK_MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = buildRecipe {
+            +" B "
+            +"DHD"
+            +" B "
+            'B' means SlimefunItems.ELECTRIC_MOTOR
+            'D' means SlimefunItems.HEATING_COIL
+            'H' means FAST_MAGICAL_FABRICATOR
+        }
+    }
+    // Bedrock-friendly machines end
     //</editor-fold>
 }

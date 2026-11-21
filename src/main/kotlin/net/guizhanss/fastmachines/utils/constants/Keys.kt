@@ -8,6 +8,7 @@ object Keys {
     val MAIN_GROUP = fmKey("fast_machines")
     val MATERIALS = fmKey("materials")
     val MACHINES = fmKey("machines")
+    val BEDROCK_MACHINES = fmKey("bedrock_machines")
     val HIDDEN = fmKey("hidden")
     val DISPLAY_ITEM = fmKey("display_item")
 }
