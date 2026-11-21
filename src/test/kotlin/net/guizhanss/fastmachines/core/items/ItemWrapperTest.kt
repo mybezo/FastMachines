@@ -1,5 +1,7 @@
 package net.guizhanss.fastmachines.core.items
 
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.TextDecoration
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.junit.jupiter.api.AfterEach
@@ -38,5 +40,27 @@ class ItemWrapperTest {
         val wrapper4 = ItemWrapper.of(ItemStack(Material.GOLD_INGOT, 16))
 
         assertEquals(wrapper3, wrapper4)
+    }
+
+    @Test
+    fun testHashIgnoresMeta() {
+        // same item with differently serialized meta must still hash the same
+        val item1 = ItemStack(Material.DIAMOND).apply {
+            editMeta { it.lore(listOf(Component.text("Crafting material"))) }
+        }
+        val item2 = ItemStack(Material.DIAMOND).apply {
+            editMeta {
+                it.lore(
+                    listOf(
+                        Component.text("Crafting material")
+                            .decoration(TextDecoration.BOLD, false)
+                            .decoration(TextDecoration.UNDERLINED, false)
+                    )
+                )
+            }
+        }
+
+        assertEquals(ItemWrapper.of(item1).hashCode(), ItemWrapper.of(item2).hashCode())
+        assertEquals(ItemWrapper.of(Material.DIAMOND).hashCode(), ItemWrapper.of(item1).hashCode())
     }
 }

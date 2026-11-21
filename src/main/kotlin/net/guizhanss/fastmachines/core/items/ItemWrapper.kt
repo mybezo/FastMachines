@@ -1,11 +1,13 @@
 package net.guizhanss.fastmachines.core.items
 
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun
 import io.github.thebusybiscuit.slimefun4.utils.itemstack.ItemStackWrapper
 import net.guizhanss.fastmachines.utils.items.isSimilarTo
 import net.guizhanss.guizhanlib.kt.slimefun.extensions.getSlimefunItem
 import net.guizhanss.guizhanlib.kt.slimefun.extensions.isSlimefunItem
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.ItemMeta
 
 /**
  * A wrapper for [ItemStack] that only focus on the item type and meta.
@@ -44,10 +46,32 @@ data class ItemWrapper private constructor(
             return ItemWrapper(baseItem)
         }
 
+        /**
+         * Calculates the hash from the stable identity of the item only: the material,
+         * plus the Slimefun item ID for Slimefun items.
+         *
+         * [ItemMeta.hashCode] must not be used here: it depends on how the name/lore components
+         * are serialized, so two copies of the same item (e.g. one that went through a Networks
+         * grid/drawer/quantum storage) can have different meta hashes while still being
+         * [isSimilarTo] each other, which breaks the hashCode/equals contract.
+         *
+         * Items that are equal always have the same Slimefun ID (or both have none),
+         * since [isSimilarTo] requires their PersistentDataContainers to be equal.
+         */
         private fun ItemStack.calcHash(): Int {
-            var result = type.hashCode()
-            result = 31 * result + (if (hasItemMeta()) itemMeta.hashCode() else 0)
-            return result
+            val typeHash = type.hashCode()
+            if (type.isAir || !hasItemMeta()) return typeHash
+
+            val sfId = try {
+                Slimefun.getItemDataService().getItemData(itemMeta).orElse(null)
+            } catch (_: Exception) {
+                // Slimefun is not available (e.g. in unit tests)
+                null
+            } catch (_: LinkageError) {
+                null
+            } ?: return typeHash
+
+            return 31 * typeHash + sfId.hashCode()
         }
     }
 
