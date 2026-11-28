@@ -60,6 +60,7 @@ class ItemWrapperTest {
             }
         }
 
+        assertEquals(ItemWrapper.of(item1), ItemWrapper.of(item2))
         assertEquals(ItemWrapper.of(item1).hashCode(), ItemWrapper.of(item2).hashCode())
         assertEquals(ItemWrapper.of(Material.DIAMOND).hashCode(), ItemWrapper.of(item1).hashCode())
     }

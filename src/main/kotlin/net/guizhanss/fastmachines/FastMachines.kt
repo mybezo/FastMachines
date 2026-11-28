@@ -161,6 +161,13 @@ class FastMachines : AbstractAddon(
             instance.logger.log(level, ex) { message }
         }
 
+        /**
+         * Whether to use Bukkit's item comparison. Defaults to `false` when the config is not loaded yet
+         * (e.g. in unit tests).
+         */
+        internal val useBukkitItemComparison: Boolean
+            get() = Companion::configService.isInitialized && configService.fmUseBukkitItemComparison.value
+
         fun debug(message: String) {
             if (!Companion::configService.isInitialized || !configService.debug.value) return
             log(Level.INFO, "[DEBUG] $message")
